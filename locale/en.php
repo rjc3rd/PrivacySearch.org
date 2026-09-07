@@ -12,7 +12,7 @@ return array(
     "site_description" => "A Privacy Respecting Proxy Meta Search Engine.",
     "meta_title" => "ProxySearch — Private Meta Search Engine, No Tracking",
     "meta_description" => "ProxySearch is a privacy-respecting meta search engine — results from DuckDuckGo, Bing, and Yahoo without tracking, logging, or ads. No JavaScript required.",
-    "active_development_notice" => "Actively maintained — checked weekly (last update: %s)",
+    "active_development_notice" => "Actively maintained (last verified: %s)",
 
     "category_general" => "General",
     "category_torrents" => "Torrents",
