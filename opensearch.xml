@@ -3,7 +3,7 @@
   <ShortName>ProxySearch</ShortName>
   <Description>A Privacy Respecting Proxy Meta Search Engine.</Description>
   <InputEncoding>UTF-8</InputEncoding>
-  <Image width="16" height="16" type="image/x-icon">[https://proxysearch.org/favicon.svg]</Image>
+  <Image width="16" height="16" type="image/svg+xml">https://proxysearch.org/favicon.svg</Image>
   <Url rel="results" type="text/html" method="get" template="https://proxysearch.org/search.php?q={searchTerms}" />
   <Url rel="self" type="application/opensearchdescription+xml" template="https://proxysearch.org/opensearch.xml?method=GET" />
 </OpenSearchDescription>

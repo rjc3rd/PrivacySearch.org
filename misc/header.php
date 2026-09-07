@@ -8,7 +8,7 @@
         <meta charset="UTF-8"/>
         <meta name="description" content="<?php printtext("meta_description"); ?>"/>
         <meta name="referrer" content="no-referrer"/>
-        <link rel="icon" type="image/x-icon" href="favicon.svg">
+        <link rel="icon" type="image/svg+xml" href="favicon.svg">
         <link rel="stylesheet" type="text/css" href="static/css/styles.css"/>
         <link title="<?php printtext("page_title"); ?>" type="application/opensearchdescription+xml" href="opensearch.xml?method=POST" rel="search"/>
         <link rel="stylesheet" type="text/css" href="<?php
