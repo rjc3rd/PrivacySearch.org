@@ -165,6 +165,46 @@ a:hover,
     margin-left: 10px;
 }
 
+.misc-container.api-docs {
+    width: 95%;
+    max-width: 700px;
+    text-align: left;
+}
+
+.api-docs h2 {
+    font-size: 20px;
+    margin-top: 40px;
+}
+
+.api-docs table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+
+.api-docs th,
+.api-docs td {
+    text-align: left;
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+}
+
+.api-docs pre {
+    background-color: var(--special-text-background);
+    color: var(--special-text-color);
+    padding: 15px;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.api-docs code {
+    background-color: var(--special-text-background);
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
 .misc-container a {
     color: inherit;
     text-decoration: underline;
