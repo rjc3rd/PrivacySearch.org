@@ -1,5 +1,6 @@
 <?php
     if (empty(trim($_REQUEST["q"] ?? ""))) {
+        $page_noindex = true;
         require_once "misc/header.php";
 ?>
 

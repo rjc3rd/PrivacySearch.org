@@ -39,6 +39,7 @@
         }
 
 
+        $page_noindex = true;
         require_once "misc/header.php";
         $opts = load_opts();
 ?>

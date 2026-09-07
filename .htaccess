@@ -1,5 +1,15 @@
-# Security headers. HTTP-to-HTTPS redirect is already enforced at the
-# server/vhost level (ISPConfig "force SSL" setting) -- not duplicated here.
+# Force HTTPS. The "force SSL" setting this was assumed to already be
+# handled by turned out to only ever have existed on an abandoned old
+# HestiaCP config for this server, not the current ISPConfig one -- plain
+# HTTP was serving real content directly (confirmed via curl), which is
+# also part of why Google Search Console flagged "Page with redirect".
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# Security headers.
 <IfModule mod_headers.c>
     Header always set X-Content-Type-Options "nosniff"
     Header always set X-Frame-Options "DENY"
