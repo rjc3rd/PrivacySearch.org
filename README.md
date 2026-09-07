@@ -6,17 +6,20 @@ A privacy-respecting, JavaScript-free meta search engine that fetches results
 from major US search providers without tracking you — built to actually work,
 every time you click search, not just sometimes.
 
-This started as a fork of [Ahwxorg/LibreY](https://github.com/Ahwxorg/LibreY),
-and still carries its look, feel, and general structure — full credit to that
-project and its contributors for the foundation. But the backend has since
-been thoroughly rewritten, and the backend is where the real work went. The
-visual layer barely changed; every search engine this site talks to was
-individually tested against production, kept only if it demonstrably still
-works, and one (Yahoo) was added that was never part of upstream LibreY at
-all. Enough has changed that this is arguably no longer just a LibreY fork
-running someone else's search logic — it's its own proxy search built on
-that foundation, kept close to upstream's structure mainly so it stays easy
-to maintain going forward.
+This started as a fork of [Ahwxorg/LibreY](https://github.com/Ahwxorg/LibreY)
+— full credit to that project and its contributors for the foundation it
+gave this a running start on. It's had a considerably longer trip since:
+a full backend rewrite (every search engine individually re-verified against
+production, several removed, one added that was never part of upstream at
+all) and, more recently, a full ground-up redesign into a real, modern
+Tailwind CSS v4 site — dark/light that just follows your system automatically,
+no toggles, no clutter, and an interface that actually looks like it was built
+this decade instead of carrying over a years-old default theme. There's very
+little of the original left at this point. This is its own project now, not
+an upstream-tracked fork — the same relationship Ubuntu has to Debian, maybe
+further apart than that. It doesn't sync with upstream LibreY anymore; it's
+maintained independently, on its own judgment about what actually works and
+what actually looks good.
 
 ## Reliability first — that's the actual point
 
@@ -101,11 +104,33 @@ That gap is the whole reason this rewrite happened.
   SafeSearch may not have done anything on some engines before now, on
   this fork or upstream.
 
+## Design — real Tailwind, not a coat of paint
+
+The site used to ship with ~19 hand-picked color themes and a manual toggle
+to switch between them — Dracula, Nord, Tokyo Night, Catppuccin in four
+flavors, that whole genre. Near as anyone could tell, nobody used them, and
+they were never particularly attractive to begin with — more a demonstration
+of someone's ability to build a theme picker than something worth the upkeep.
+All of it is gone now, replaced with exactly two states — dark and light —
+chosen automatically from the visitor's own OS or browser setting via
+Tailwind v4's real default (`prefers-color-scheme`). No toggle, because
+there's nothing to toggle: the same one your system is already set to is the
+one you get.
+
+Every page — homepage, search results, Settings, the API docs — was rebuilt
+from scratch in Tailwind CSS v4, mobile-first, with a real component
+language (rounded corners, proper shadows, a single consistent accent color)
+instead of years of accumulated hand-written CSS. No CDN — a locally
+compiled build, same as everything else this site doesn't outsource to a
+third party. Old, unused assets (the multi-theme stylesheet, leftover
+donate-page images from a feature this fork never had) were removed
+entirely rather than left to rot alongside the new code.
+
 ## Maintenance
 
 Originally built in 2022, then untouched for a couple years. Revived and now
 maintained with [Claude Code](https://claude.com/claude-code) doing the
-actual upstream syncs, bug fixes, and deploys, checked in on weekly.
+actual bug fixes, redesigns, and deploys.
 
 ## License
 
