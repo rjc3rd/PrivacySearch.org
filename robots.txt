@@ -1,3 +1,7 @@
 User-agent: *
+Disallow: /search.php
+Disallow: /settings.php
+Disallow: /api.php
+Allow: /
 
-Disallow: /
+Sitemap: https://proxysearch.org/sitemap.xml

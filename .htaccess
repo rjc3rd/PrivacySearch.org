@@ -1,0 +1,17 @@
+# Security headers. HTTP-to-HTTPS redirect is already enforced at the
+# server/vhost level (ISPConfig "force SSL" setting) -- not duplicated here.
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "DENY"
+    Header always set Referrer-Policy "no-referrer"
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+</IfModule>
+
+# Don't let Apache list directory contents if an index file is ever missing.
+Options -Indexes
+
+# Block direct HTTP access to dotfiles (.deploy-version, etc.) -- PHP can
+# still read them locally, this only blocks requests made over the web.
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>

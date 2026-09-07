@@ -6,7 +6,7 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta charset="UTF-8"/>
-        <meta name="description" content="<?php printtext("site_description"); ?>"/>
+        <meta name="description" content="<?php printtext("meta_description"); ?>"/>
         <meta name="referrer" content="no-referrer"/>
         <link rel="icon" type="image/x-icon" href="favicon.svg">
         <link rel="stylesheet" type="text/css" href="static/css/styles.css"/>

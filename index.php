@@ -1,6 +1,6 @@
 <?php require_once "misc/header.php"; ?>
 
-    <title>ProxySearch</title>
+    <title>ProxySearch — Private Meta Search Engine, No Tracking</title>
     </head>
     <body>
         <form class="search-container" action="search.php" method="get" autocomplete="off">

@@ -10,6 +10,7 @@ return array(
     "api_link" => "API",
 
     "site_description" => "A Privacy Respecting Proxy Meta Search Engine.",
+    "meta_description" => "ProxySearch is a privacy-respecting meta search engine — results from DuckDuckGo, Bing, and Yahoo without tracking, logging, or ads. No JavaScript required.",
     "active_development_notice" => "Actively maintained — checked weekly (last update: %s)",
 
     "category_general" => "General",
