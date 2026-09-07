@@ -13,7 +13,6 @@ return array(
     "active_development_notice" => "Actively maintained — checked weekly (last update: %s)",
 
     "category_general" => "General",
-    "category_images" => "Images",
     "category_torrents" => "Torrents",
     "category_tor" => "Tor",
     "category_maps" => "Maps",

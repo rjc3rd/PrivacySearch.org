@@ -122,10 +122,6 @@
         switch ($opts->type)
         {
             case 1:
-                require_once "engines/bing/image.php";
-                return new BingImageSearch($opts, $mh);
-
-            case 2:
                 if ($opts->disable_bittorrent_search) {
                     echo "<p class=\"text-result-container\">" . TEXTS["feature_disabled"] . "</p>";
                     break;
@@ -134,7 +130,7 @@
                 require_once "engines/bittorrent/merge.php";
                 return new TorrentSearch($opts, $mh);
 
-            case 3:
+            case 2:
                 if ($opts->disable_hidden_service_search) {
                     echo "<p class=\"text-result-container\">" . TEXTS["feature_disabled"] . "</p>";
                     break;
@@ -142,7 +138,7 @@
                 require_once "engines/ahmia/hidden_service.php";
                 return new TorSearch($opts, $mh);
 
-            case 4:
+            case 3:
                 require_once "engines/maps/openstreetmap.php";
                 return new OSMRequest($opts, $mh);
 

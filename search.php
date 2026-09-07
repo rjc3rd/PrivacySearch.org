@@ -53,14 +53,14 @@
             <input type="hidden" name="p" value="0">
             <div class="sub-search-button-wrapper">
                 <?php
-                    $categories = array("general", "images", "torrents", "tor", "maps");
+                    $categories = array("general", "torrents", "tor", "maps");
 
                     foreach ($categories as $category)
                     {
                         $category_index = array_search($category, $categories);
 
-                        if (($opts->disable_bittorrent_search && $category_index == 2) ||
-                            ($opts->disable_hidden_service_search && $category_index == 3))
+                        if (($opts->disable_bittorrent_search && $category_index == 1) ||
+                            ($opts->disable_hidden_service_search && $category_index == 2))
                         {
                             continue;
                         }
