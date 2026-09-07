@@ -19,6 +19,7 @@ return (object) array(
         // "text" => "yandex"
         // "text" => "ecosia"
         // "text" => "mojeek"
+        // "text" => "bing"
     ),
 
     // Number of results to be shown on results page
@@ -37,7 +38,7 @@ return (object) array(
 
     "disable_hidden_service_search" => false,
 
-    // Fallback to another LibreY instance if preferred search engine fails
+    // Fallback to another LibreY/LibreX instance if preferred search engine fails
     // This may greatly increase the time it takes to get a result, if a direct search is not possible
     "instance_fallback" => true,
 
@@ -70,6 +71,18 @@ return (object) array(
             "project_url" => "https://codeberg.org/video-prize-ranch/rimgo#instances",
             "original_name" => "Imgur",
             "original_url" => "imgur.com"
+        ),
+        "scribe" => array(
+            "instance_url" => "",
+            "project_url" => "https://git.sr.ht/~edwardloveall/scribe/tree/main/docs/instances.md",
+            "original_name" => "Medium",
+            "original_url" => "medium.com"
+        ),
+        "gothub" => array(
+            "instance_url" => "",
+            "project_url" => "https://codeberg.org/gothub/gothub#instances",
+            "original_name" => "GitHub",
+            "original_url" => "github.com"
         ),
         "nitter" => array(
             "instance_url" => "",
@@ -107,6 +120,12 @@ return (object) array(
             "original_name" => "IMDb",
             "original_url" => "imdb.com"
         ),
+        "breezewiki" => array(
+            "instance_url" => "",
+            "project_url" => "https://docs.breezewiki.com/Links.html",
+            "original_name" => "Fandom",
+            "original_url" => "fandom.com"
+        ),
         "anonymousoverflow" => array(
             "instance_url" => "",
             "project_url" => "https://github.com/httpjamesm/AnonymousOverflow#clearnet-instances",
@@ -118,10 +137,16 @@ return (object) array(
             "project_url" => "https://git.vern.cc/cobra/Suds/src/branch/main/instances.json",
             "original_name" => "Snopes",
             "original_url" => "snopes.com"
+        ),
+        "biblioreads" => array(
+            "instance_url" => "",
+            "project_url" => "https://github.com/nesaku/BiblioReads#instances",
+            "original_name" => "Goodreads",
+            "original_url" => "goodreads.com"
         )
     ),
 
-    // To send search requests through a proxy uncomment CURLOPT_PROXY and CURL>
+    // To send search requests through a proxy uncomment CURLOPT_PROXY and CURLOPT_PROXYTYPE:
     // CURLOPT_PROXYTYPE options:
     //     CURLPROXY_HTTP
     //     CURLPROXY_SOCKS4
@@ -134,7 +159,7 @@ return (object) array(
         // CURLOPT_PROXYTYPE => CURLPROXY_HTTP,
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => "",
-        CURLOPT_USERAGENT => "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:116.0) Gecko/20100101 Firefox/116.0", // For a normal Windows 10 PC running Firefox x64
+        CURLOPT_USERAGENT => "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:125.0) Gecko/20100101 Firefox/125.0", // For a normal Windows 10 PC running Firefox x64
         CURLOPT_IPRESOLVE => CURL_IPRESOLVE_WHATEVER,
         CURLOPT_CUSTOMREQUEST => "GET",
         CURLOPT_PROTOCOLS => CURLPROTO_HTTPS | CURLPROTO_HTTP,
