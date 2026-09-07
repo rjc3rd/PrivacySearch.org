@@ -1,0 +1,4 @@
+# Runtime stats/log data, not source — same folder deploy-site already excludes.
+stats/
+
+.DS_Store
