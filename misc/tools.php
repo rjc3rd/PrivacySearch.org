@@ -11,6 +11,14 @@
     }
 
     function seconds_to_human_readable($inputSeconds) {
+      // Livestreams and some results come back with no duration at all
+      // (empty string) -- dividing that throws a TypeError in PHP 8, so
+      // bail out cleanly instead of taking down the whole results page.
+      if (!is_numeric($inputSeconds)) {
+          return '';
+      }
+      $inputSeconds = (int)$inputSeconds;
+
       $secondsInAMinute = 60;
       $secondsInAnHour = 60 * $secondsInAMinute;
       $secondsInADay = 24 * $secondsInAnHour;
