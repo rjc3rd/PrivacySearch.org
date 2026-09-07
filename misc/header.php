@@ -8,7 +8,18 @@
         <meta charset="UTF-8"/>
         <meta name="description" content="<?php printtext("meta_description"); ?>"/>
         <meta name="referrer" content="no-referrer"/>
+        <link rel="canonical" href="https://proxysearch.org/"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:url" content="https://proxysearch.org/"/>
+        <meta property="og:title" content="<?php printtext("meta_title"); ?>"/>
+        <meta property="og:description" content="<?php printtext("meta_description"); ?>"/>
+        <meta property="og:image" content="https://proxysearch.org/og-image.png"/>
+        <meta name="twitter:card" content="summary_large_image"/>
+        <meta name="twitter:title" content="<?php printtext("meta_title"); ?>"/>
+        <meta name="twitter:description" content="<?php printtext("meta_description"); ?>"/>
+        <meta name="twitter:image" content="https://proxysearch.org/og-image.png"/>
         <link rel="icon" type="image/svg+xml" href="favicon.svg">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <link rel="stylesheet" type="text/css" href="static/css/styles.css"/>
         <link title="<?php printtext("page_title"); ?>" type="application/opensearchdescription+xml" href="opensearch.xml?method=POST" rel="search"/>
         <link rel="stylesheet" type="text/css" href="<?php

@@ -1,6 +1,22 @@
 <?php require_once "misc/header.php"; ?>
 
-    <title>ProxySearch — Private Meta Search Engine, No Tracking</title>
+    <title><?php printtext("meta_title"); ?></title>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "ProxySearch",
+        "url": "https://proxysearch.org/",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://proxysearch.org/search.php?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
     </head>
     <body>
         <form class="search-container" action="search.php" method="get" autocomplete="off">
