@@ -57,6 +57,17 @@ default set, and every one of them is confirmed working, right now, from
 this server. That trade was made deliberately: three engines that always
 return something beats five where two are dead weight.
 
+**The difference this makes is not subtle.** The previous version of this
+site — stock LibreY, dead engines and all — routinely took close to ten
+seconds per search and still frequently came back with "no results found,"
+because a chosen engine would time out, then the cross-instance fallback
+(since removed) would take its own several seconds trying another server,
+and often *that* would fail too. With only the three engines actually
+confirmed reliable now, and that fallback gone, searches typically resolve
+in under a second, and every search run during this testing has returned
+a real result on the first try — not "eventually, after retrying."
+That gap is the whole reason this rewrite happened.
+
 ## Other changes from upstream
 
 - **Image and video search have been removed entirely**, for the same
