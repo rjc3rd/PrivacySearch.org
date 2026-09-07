@@ -6,3 +6,4 @@ deploy-site
 
 # Stamped fresh by deploy-site on every deploy; not source.
 .deploy-version
+.well-known/security.txt
