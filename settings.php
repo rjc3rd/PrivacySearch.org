@@ -114,14 +114,23 @@
                         <?php printtext("settings_frontends_disable");?>
                     </label>
 
-                    <div class="grid gap-3 sm:grid-cols-2">
+                    <div class="grid gap-4 sm:grid-cols-2">
                           <?php
-                               foreach($opts->frontends as $frontend => $data)
-                               {
+                               function print_frontend_row($frontend, $data, $opts) {
                                     echo '<div class="flex items-center gap-2">';
                                     echo '<a class="w-40 shrink-0 text-sm font-medium text-accent-600 hover:underline dark:text-accent-400" href="' . $data["project_url"] . '" target="_blank">' . ucfirst($frontend) . '</a>';
                                     echo '<input type="text" name="' . $frontend . '" placeholder="Replace ' . $data["original_name"] . '" value="' . htmlspecialchars($opts->frontends["$frontend"]["instance_url"] ?? "") . '"';
                                     echo ' class="w-full rounded-lg border border-zinc-300 bg-white px-3 py-1.5 text-sm outline-none placeholder:text-zinc-400 focus:border-accent-500 focus:ring-2 focus:ring-accent-500/40 dark:border-zinc-700 dark:bg-zinc-800">';
+                                    echo '</div>';
+                               }
+
+                               $halves = array_chunk($opts->frontends, (int) ceil(count($opts->frontends) / 2), true);
+
+                               foreach ($halves as $half) {
+                                    echo '<div class="flex flex-col gap-4 rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-800/50">';
+                                    foreach ($half as $frontend => $data) {
+                                         print_frontend_row($frontend, $data, $opts);
+                                    }
                                     echo '</div>';
                                }
                           ?>
