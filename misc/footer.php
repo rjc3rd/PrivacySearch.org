@@ -1,10 +1,11 @@
 <div class="footer-container">
-    <a href="<?php printbrand("site_back_link"); ?>"><?php printbrand("site_title"); ?></a>
-    <a href="<?php printbrand("instance_source_code"); ?>" target="_blank"><?php printtext("source_code"); ?></a>
-    <a href="./settings.php"><?php printtext("settings"); ?></a>
-    <a href="./instances.php" target="_blank"><?php printtext("instances"); ?></a>
-    <a href="./api.php" target="_blank"><?php printtext("api"); ?></a>
+    <a href="https://proxysearch.org">ProxySearch</a>
+    <a href="https://github.com/Ahwxorg/LibreY" target="_blank"><?php printtext("source_code_link");?></a>
+    <a href="./instances.php" target="_blank"><?php printtext("instances_link");?></a>
+    <a href="./settings.php"><?php printtext("settings_link");?></a>
+    <?php if(!$opts->disable_api) {
+        echo '<a href="./api.php" target="_blank">', printtext("api_link"), '</a>';
+    } ?>
 </div>
 </body>
-
 </html>
