@@ -21,10 +21,10 @@
             if (!is_null($results_language))
                 $url .= "&srchlang=$results_language";
 
-            // TODO Reconsider current safe-search implementation for granularity
-            // NOTE Possible values are strict, demote (moderate, default), off
-            if (isset($_COOKIE["safe_search"]))
-                $url .= "&adlt=demote";
+            // SafeSearch is mandatory here, not a visitor toggle. "strict"
+            // filters explicit text/images/video; "demote" (the old value
+            // here) only deprioritizes them in ranking, doesn't filter them.
+            $url .= "&adlt=strict";
 
             return $url;
         }

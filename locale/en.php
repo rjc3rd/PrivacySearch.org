@@ -6,7 +6,6 @@ return array(
     "torrent_search_button" => "Search torrents with ProxySearch",
 
     "source_code_link" => "Source",
-    "instances_link" => "Instances",
     "settings_link" => "Settings",
     "api_link" => "API",
 
@@ -15,7 +14,6 @@ return array(
 
     "category_general" => "General",
     "category_images" => "Images",
-    "category_videos" => "Videos",
     "category_torrents" => "Torrents",
     "category_tor" => "Tor",
     "category_maps" => "Maps",
@@ -37,15 +35,11 @@ return array(
 
     "settings_number_of_results" => "Number of results per page",
 
-    "settings_safe_search" => "Safe search",
     "settings_save" => "Save",
     "settings_reset" => "Reset",
 
-    "failure_fallback" => "No results found. Unable to fallback to other instances.",
     "failure_empty" => "No results found. Please try different keywords!",
     "result_no_description" => "No description was provided for this site.",
-
-    "instances_librex" => "The following instances are running the older %s",
 
     "api_unavailable" => "This ProxySearch API is unavailable at the moment"
 );

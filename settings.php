@@ -93,8 +93,6 @@
                     <input type="checkbox" name="disable_special" <?php echo $opts->disable_special ? "checked"  : ""; ?> ><br>
                     <label><?php printtext("settings_frontends_disable");?></label>
                     <input type="checkbox" name="disable_frontends" <?php echo $opts->disable_frontends ? "checked"  : ""; ?> ><br>
-                    <label><?php printtext("settings_safe_search");?></label>
-                    <input type="checkbox" name="safe_search" <?php echo $opts->safe_search ? "checked"  : ""; ?> ><br>
                 </div>
 
                 <h2><?php printtext("settings_frontends");?></h2>

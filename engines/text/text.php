@@ -1,6 +1,6 @@
 <?php
     function get_engines() {
-        return array("google", "duckduckgo", "brave", "yandex", "ecosia", "mojeek", "bing");
+        return array("google", "duckduckgo", "brave", "bing", "yahoo");
     }
 
     class TextSearch extends EngineRequest {
@@ -73,24 +73,14 @@
                 return new BraveSearchRequest($opts, $mh);
             }
 
-            if ($engine == "yandex") {
-                require_once "engines/text/yandex.php";
-                return new YandexSearchRequest($opts, $mh);
-            }
-
-            if ($engine == "ecosia") {
-                require_once "engines/text/ecosia.php";
-                return new EcosiaSearchRequest($opts, $mh);
-            }
-
-            if ($engine == "mojeek") {
-                require_once "engines/text/mojeek.php";
-                return new MojeekSearchRequest($opts, $mh);
-            }
-
             if ($engine == "bing") {
                 require_once "engines/text/bing.php";
                 return new BingSearchRequest($opts, $mh);
+            }
+
+            if ($engine == "yahoo") {
+                require_once "engines/text/yahoo.php";
+                return new YahooSearchRequest($opts, $mh);
             }
 
             // if an invalid engine is selected, don't give any results

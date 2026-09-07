@@ -16,31 +16,17 @@ return (object) array(
         // "text" => "google"
         // "text" => "duckduckgo"
         // "text" => "brave"
-        // "text" => "yandex"
-        // "text" => "ecosia"
-        // "text" => "mojeek"
         // "text" => "bing"
+        // "text" => "yahoo"
     ),
 
     // Number of results to be shown on results page
     "number_of_results" => "20",
 
-    // Choose an Invidious instance for video search results page
-    // This link is only used for scraping results for video results page
-    // The results page will link directly to https://youtube.com
-    // Unless the user has selected an Invidious frontend for youtube links on the settings page
-    // If this link is broken, the user will not receive any video links on results page
-    // You can even use https://youtube.com since we are a proxy anyway
-    "invidious_instance_for_video_results" => "https://inv.tux.pizza",
-
     "disable_bittorrent_search" => false,
     "bittorrent_trackers" => "&tr=http://nyaa.tracker.wf:7777/announce&tr=udp://open.stealth.si:80/announce&tr=udp://tracker.opentrackr.org:1337/announce&tr=udp://exodus.desync.com:6969/announce&tr=udp://tracker.torrent.eu.org:451/announce",
 
     "disable_hidden_service_search" => false,
-
-    // Fallback to another LibreY/LibreX instance if preferred search engine fails
-    // This may greatly increase the time it takes to get a result, if a direct search is not possible
-    "instance_fallback" => true,
 
     // how long in minutes to put google/other instances on cooldown if they aren't responding
     "request_cooldown" => "30",

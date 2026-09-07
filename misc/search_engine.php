@@ -81,18 +81,14 @@
 
         $opts->theme = $_REQUEST["theme"] ?? trim(htmlspecialchars($_COOKIE["theme"] ?? $opts->default_theme ?? "dark"));
 
-        $opts->safe_search = (int) ($_REQUEST["safe"] ?? 0) == 1 || isset($_COOKIE["safe_search"]);
+        // Mandatory, not a visitor setting -- see commit history for why.
+        $opts->safe_search = true;
 
         $opts->disable_special = (int) ($_REQUEST["ns"] ?? 0) == 1 || isset($_COOKIE["disable_special"]);
 
         $opts->disable_frontends = (int) ($_REQUEST["nf"] ?? 0) == 1 || isset($_COOKIE["disable_frontends"]);
 
         $opts->language = $_REQUEST["lang"] ?? trim(htmlspecialchars($_COOKIE["language"] ?? $opts->language ?? "en"));
-
-        $opts->do_fallback = (int) ($_REQUEST["nfb"] ?? 0) == 0;
-        if (!$opts->instance_fallback) {
-            $opts->do_fallback = false;
-        }
 
         $opts->number_of_results ??= trim(htmlspecialchars($_COOKIE["number_of_results"]));
 
@@ -126,14 +122,10 @@
         switch ($opts->type)
         {
             case 1:
-                require_once "engines/qwant/image.php";
-                return new QwantImageSearch($opts, $mh);
+                require_once "engines/bing/image.php";
+                return new BingImageSearch($opts, $mh);
 
             case 2:
-                require_once "engines/invidious/video.php";
-                return new VideoSearch($opts, $mh);
-
-            case 3:
                 if ($opts->disable_bittorrent_search) {
                     echo "<p class=\"text-result-container\">" . TEXTS["feature_disabled"] . "</p>";
                     break;
@@ -142,7 +134,7 @@
                 require_once "engines/bittorrent/merge.php";
                 return new TorrentSearch($opts, $mh);
 
-            case 4:
+            case 3:
                 if ($opts->disable_hidden_service_search) {
                     echo "<p class=\"text-result-container\">" . TEXTS["feature_disabled"] . "</p>";
                     break;
@@ -150,7 +142,7 @@
                 require_once "engines/ahmia/hidden_service.php";
                 return new TorSearch($opts, $mh);
 
-            case 5:
+            case 4:
                 require_once "engines/maps/openstreetmap.php";
                 return new OSMRequest($opts, $mh);
 
@@ -174,11 +166,6 @@
         } while ($running);
 
         $results = $search_category->get_results();
-
-        if (empty($results)) {
-            require_once "engines/librex/fallback.php";
-            $results = get_librex_results($opts);
-        }
 
         if (!$do_print || empty($results))
             return $results;

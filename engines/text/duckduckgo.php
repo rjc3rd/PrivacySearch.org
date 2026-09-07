@@ -16,8 +16,10 @@
             if (3 > strlen($number_of_results) && 0 < strlen($number_of_results))
                 $url .= "&num=$number_of_results";
 
-            if (isset($_COOKIE["safe_search"]))
-                $url .= "&safe=medium";
+            // SafeSearch is mandatory here, not a visitor toggle. DDG's real
+            // param is "kp" (1=strict) -- "safe=medium" (the old value here)
+            // isn't a real DuckDuckGo parameter at all, so this never worked.
+            $url .= "&kp=1";
 
             return $url;
         }

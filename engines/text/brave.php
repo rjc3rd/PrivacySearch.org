@@ -17,8 +17,10 @@
             if (3 > strlen($number_of_results) && 0 < strlen($number_of_results))
                 $url .= "&num=$number_of_results";
 
-            if (isset($_COOKIE["safe_search"]))
-                $url .= "&safe=medium";
+            // SafeSearch is mandatory here, not a visitor toggle. Brave's real
+            // param is "safesearch" -- "safe=medium" (the old value here) isn't
+            // a real Brave parameter at all, so this never actually worked.
+            $url .= "&safesearch=strict";
 
             return $url;
         }

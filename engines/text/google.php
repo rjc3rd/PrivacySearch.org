@@ -38,8 +38,9 @@
             if (3 > strlen($number_of_results) && 0 < strlen($number_of_results))
                 $url .= "&num=$number_of_results";
 
-            if (isset($_COOKIE["safe_search"]))
-                $url .= "&safe=medium";
+            // SafeSearch is mandatory here, not a visitor toggle. "active" is
+            // Google's actual strict value -- "medium" isn't a real one.
+            $url .= "&safe=active";
 
             $url .= "&asearch=arc&async=arc_id:$this->arc_id$arc_page,use_ac:true,_fmt:html";
 
