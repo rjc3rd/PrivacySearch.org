@@ -1,71 +1,69 @@
 <?php
-class TorrentSearch extends EngineRequest
-{
-    protected $requests;
-    public function __construct($opts, $mh)
-    {
-        parent::__construct($opts, $mh);
+    class TorrentSearch extends EngineRequest {
+        protected $requests;
+        public function __construct($opts, $mh) {
+            parent::__construct($opts, $mh);
 
-        require_once "engines/bittorrent/thepiratebay.php";
-        require_once "engines/bittorrent/rutor.php";
-        require_once "engines/bittorrent/yts.php";
-        require_once "engines/bittorrent/torrentgalaxy.php";
-        require_once "engines/bittorrent/1337x.php";
-        require_once "engines/bittorrent/sukebei.php";
+            require_once "engines/bittorrent/thepiratebay.php";
+            require_once "engines/bittorrent/rutor.php";
+            require_once "engines/bittorrent/yts.php";
+            require_once "engines/bittorrent/torrentgalaxy.php";
+            require_once "engines/bittorrent/1337x.php";
+            require_once "engines/bittorrent/sukebei.php";
 
-        $this->requests = array(
-            new PirateBayRequest($opts, $mh),
-            new _1337xRequest($opts, $mh),
-            new NyaaRequest($opts, $mh),
-            new RutorRequest($opts, $mh),
-            new SukebeiRequest($opts, $mh),
-            new TorrentGalaxyRequest($opts, $mh),
-            new YTSRequest($opts, $mh),
-        );
-    }
-
-    public function parse_results($response)
-    {
-        $results = array();
-        foreach ($this->requests as $request) {
-            if ($request->successful())
-                $results = array_merge($results, $request->get_results());
+            $this->requests = array(
+                new PirateBayRequest($opts, $mh),
+                new _1337xRequest($opts, $mh),
+                new NyaaRequest($opts, $mh),
+                new RutorRequest($opts, $mh),
+                new SukebeiRequest($opts, $mh),
+                new TorrentGalaxyRequest($opts, $mh),
+                new YTSRequest($opts, $mh),
+            );
         }
 
-        $seeders = array_column($results, "seeders");
-        array_multisort($seeders, SORT_DESC, $results);
+        public function parse_results($response) {
+            $results = array();
+            foreach ($this->requests as $request) {
+                if ($request->successful())
+                    $results = array_merge($results, $request->get_results());
+            }
 
-        return $results;
-    }
+            $seeders = array_column($results, "seeders");
+            array_multisort($seeders, SORT_DESC, $results);
 
-    public static function print_results($results, $opts)
-    {
-        echo "<div class=\"text-result-container\">";
-
-        if (empty($results)) {
-            echo "<p>" . TEXTS["failure_empty"] . "</p>";
-            return;
+            return $results; 
         }
 
-        foreach ($results as $result) {
-            $source = $result["source"];
-            $name = $result["name"];
-            $magnet = $result["magnet"];
-            $seeders = $result["seeders"];
-            $leechers = $result["leechers"];
-            $size = $result["size"];
+        public static function print_results($results, $opts) {
+            echo "<div class=\"text-result-container\">";
 
-            echo "<div class=\"text-result-wrapper\">";
-            echo "<a href=\"$magnet\">";
-            echo "$source";
-            echo "<h2>$name</h2>";
-            echo "</a>";
-            echo "<span>SE: <span class=\"seeders\">$seeders</span> - ";
-            echo "LE: <span class=\"leechers\">$leechers</span> - ";
-            echo "$size</span>";
+            if (empty($results)) {
+                echo "<p>" . TEXTS["failure_empty"] . "</p>";
+                return;
+            }
+
+            foreach($results as $result) {
+                $source = $result["source"];
+                $name = $result["name"];
+                $magnet = $result["magnet"];
+                $seeders = $result["seeders"];
+                $leechers = $result["leechers"];
+                $size = $result["size"];
+
+                echo "<div class=\"text-result-wrapper\">";
+                echo "<a href=\"$magnet\">";
+                echo "$source";
+                echo "<h2>$name</h2>";
+                echo "</a>";
+                echo "<span>SE: <span class=\"seeders\">$seeders</span> - ";
+                echo "LE: <span class=\"leechers\">$leechers</span> - ";
+                echo "$size</span>";
+                echo "</div>";
+            }
+
             echo "</div>";
         }
-
-        echo "</div>";
     }
-}
+
+?>

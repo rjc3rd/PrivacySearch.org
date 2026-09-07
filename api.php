@@ -1,17 +1,17 @@
 <?php
-require_once "misc/search_engine.php";
-require_once "locale/localization.php";
+    require_once "misc/search_engine.php";
+    require_once "locale/localization.php";
 
-$opts = load_opts();
-if ($opts->disable_api) {
-    echo "<p>" . TEXTS["api_unavailable"] . "</p>";
-    die();
-}
+    $opts = load_opts();
+    if ($opts->disable_api) {
+        echo "<p>" . TEXTS["api_unavailable"] . "</p>";
+        die();
+    }
 
-require_once "misc/tools.php";
+    require_once "misc/tools.php";
 
-if (!$opts->query) {
-    echo "<p>Example API request: <a href=\"./api.php?q=debian&p=2&t=1\">./api.php?q=debian&p=2&t=1</a></p>
+    if (!$opts->query) {
+        echo "<p>Example API request: <a href=\"./api.php?q=gentoo&p=2&t=0\">./api.php?q=gentoo&p=2&t=0</a></p>
         <br/>
         <p>\"q\" is the keyword</p>
         <p>\"p\" is the result page (the first page is 0)</p>
@@ -20,9 +20,13 @@ if (!$opts->query) {
         <p>The results are going to be in JSON format.</p>
         <p>The API supports both POST and GET requests.</p>";
 
-    die();
-}
+        die();
+    }
 
-$results = fetch_search_results($opts, false);
-header("Content-Type: application/json");
-echo json_encode($results);
+    $results = fetch_search_results($opts, false);
+    if (array_key_exists("error", $results)) {
+        http_response_code(500);
+    }
+    header("Content-Type: application/json");
+    echo json_encode($results);
+?>
