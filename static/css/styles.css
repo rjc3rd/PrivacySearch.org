@@ -321,6 +321,11 @@ a[title] {
     margin-right: 30px;
 }
 
+.dev-status {
+    font-size: 13px;
+    color: var(--footer-fg);
+}
+
 .hide {
     display: none;
 }

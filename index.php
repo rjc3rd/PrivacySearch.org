@@ -17,6 +17,13 @@
                 } ?>
                 </div>
                 <h3><?php printtext("site_description"); ?></h3>
+                <?php
+                    // Stamped by deploy-site on every deploy; won't exist in local dev.
+                    $last_update = @trim(file_get_contents(".deploy-version"));
+                    if (!empty($last_update)) {
+                        echo '<p class="dev-status">' . sprintf(TEXTS["active_development_notice"], htmlspecialchars($last_update)) . '</p>';
+                    }
+                ?>
         </form>
 
 <?php require_once "misc/footer.php"; ?>

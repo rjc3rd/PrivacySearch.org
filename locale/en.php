@@ -11,6 +11,7 @@ return array(
     "api_link" => "API",
 
     "site_description" => "A Privacy Respecting Proxy Meta Search Engine.",
+    "active_development_notice" => "Actively maintained — checked weekly (last update: %s)",
 
     "category_general" => "General",
     "category_images" => "Images",
