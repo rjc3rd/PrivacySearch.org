@@ -326,6 +326,13 @@ a[title] {
     color: var(--footer-fg);
 }
 
+.engine-list {
+    font-size: 16px;
+    color: var(--footer-fg);
+    letter-spacing: 0.5px;
+    margin: 4px 0 18px;
+}
+
 .hide {
     display: none;
 }
