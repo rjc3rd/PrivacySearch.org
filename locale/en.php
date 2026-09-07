@@ -27,7 +27,7 @@ return array(
     "settings_special_disabled" => "Disable special queries (e.g.: currency conversion)",
 
     "settings_frontends" => "Privacy friendly frontends",
-    "settings_frontends_description" => "For an example if you want to view YouTube without getting spied on, click on \"Invidious\", find the instance that is most suitable for you then paste it in (correct format: https://example.com)",
+    "settings_frontends_description" => "For an example if you want to view Reddit without getting spied on, click on \"Redlib\", find the instance that is most suitable for you then paste it in (correct format: https://example.com)",
     "settings_frontends_disable" => "Disable frontends",
 
     "settings_search_settings" => "Search settings",

@@ -37,39 +37,21 @@ return (object) array(
 
     /*
             Preset privacy friendly frontends for users, these can be overwritten by users in the settings
-            e.g.: Preset the invidious instance URL: "instance_url" => "https://inv.tux.pizza",
+            e.g.: Preset the redlib instance URL: "instance_url" => "https://redlib.example.com",
     */
 
     "frontends" => array(
-        "invidious" => array(
-            "instance_url" => "",
-            "project_url" => "https://docs.invidious.io/instances",
-            "original_name" => "YouTube",
-            "original_url" => "youtube.com"
-        ),
         "rimgo" => array(
             "instance_url" => "",
             "project_url" => "https://codeberg.org/video-prize-ranch/rimgo#instances",
             "original_name" => "Imgur",
             "original_url" => "imgur.com"
         ),
-        "scribe" => array(
-            "instance_url" => "",
-            "project_url" => "https://git.sr.ht/~edwardloveall/scribe/tree/main/docs/instances.md",
-            "original_name" => "Medium",
-            "original_url" => "medium.com"
-        ),
         "gothub" => array(
             "instance_url" => "",
             "project_url" => "https://codeberg.org/gothub/gothub#instances",
             "original_name" => "GitHub",
             "original_url" => "github.com"
-        ),
-        "nitter" => array(
-            "instance_url" => "",
-            "project_url" => "https://github.com/zedeus/nitter/wiki/Instances",
-            "original_name" => "Twitter",
-            "original_url" => "twitter.com"
         ),
         "redlib" => array(
             "instance_url" => "",
