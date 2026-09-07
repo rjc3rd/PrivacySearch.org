@@ -1,6 +1,6 @@
 <?php
     function get_engines() {
-        return array("google", "duckduckgo", "brave", "bing", "yahoo");
+        return array("duckduckgo", "bing", "yahoo");
     }
 
     class TextSearch extends EngineRequest {
@@ -58,19 +58,9 @@
         }
 
         private function get_engine_request($engine, $opts, $mh) {
-            if ($engine == "google") {
-                require_once "engines/text/google.php";
-                return new GoogleRequest($opts, $mh);
-            }
-
             if ($engine == "duckduckgo") {
                 require_once "engines/text/duckduckgo.php";
                 return new DuckDuckGoRequest($opts, $mh);
-            }
-
-            if ($engine == "brave") {
-                require_once "engines/text/brave.php";
-                return new BraveSearchRequest($opts, $mh);
             }
 
             if ($engine == "bing") {

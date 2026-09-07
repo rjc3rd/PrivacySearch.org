@@ -1,9 +1,6 @@
 <?php
 return (object) array(
 
-    // e.g.: fr -> https://google.fr/
-    "google_domain" => "com",
-
     // Default language profile to be used on the website
     "language" => "en",
 
@@ -13,9 +10,7 @@ return (object) array(
     "preferred_engines" => array(
         "text" => "auto" // auto will automatically balance between all scrapers
         // "text" => "auto"  // auto is recommended
-        // "text" => "google"
         // "text" => "duckduckgo"
-        // "text" => "brave"
         // "text" => "bing"
         // "text" => "yahoo"
     ),

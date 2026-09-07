@@ -6,7 +6,7 @@
         <form class="search-container" action="search.php" method="get" autocomplete="off">
                 <img src="anonymous.svg" width="200px" />
                 <h1>ProxySearch</h1>
-                <p class="engine-list">Google, Bing, DuckDuckGo, Brave, Yahoo</p>
+                <p class="engine-list">Bing, DuckDuckGo, Yahoo</p>
                 <input type="text" name="q" autofocus/>
                 <input type="hidden" name="p" value="0"/>
                 <input type="hidden" name="t" value="0"/>
