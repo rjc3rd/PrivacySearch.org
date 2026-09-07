@@ -36,10 +36,10 @@
         }
 
         public static function print_results($results, $opts) {
-            echo "<div class=\"text-result-container\">";
+            echo "<div class=\"flex max-w-2xl flex-col gap-6\">";
 
             if (empty($results)) {
-                echo "<p>" . TEXTS["failure_empty"] . "</p>";
+                echo "<p class=\"text-zinc-500 dark:text-zinc-400\">" . TEXTS["failure_empty"] . "</p>";
                 return;
             }
 
@@ -51,13 +51,13 @@
                 $leechers = $result["leechers"];
                 $size = $result["size"];
 
-                echo "<div class=\"text-result-wrapper\">";
-                echo "<a href=\"$magnet\">";
-                echo "$source";
-                echo "<h2>$name</h2>";
+                echo "<div class=\"break-words\">";
+                echo "<a class=\"group\" href=\"$magnet\">";
+                echo "<span class=\"text-sm text-zinc-500 dark:text-zinc-400\">$source</span>";
+                echo "<h2 class=\"text-lg text-accent-700 group-hover:underline dark:text-accent-400\">$name</h2>";
                 echo "</a>";
-                echo "<span>SE: <span class=\"seeders\">$seeders</span> - ";
-                echo "LE: <span class=\"leechers\">$leechers</span> - ";
+                echo "<span class=\"text-sm text-zinc-600 dark:text-zinc-300\">SE: <span class=\"font-medium text-green-600 dark:text-green-400\">$seeders</span> - ";
+                echo "LE: <span class=\"font-medium text-pink-600 dark:text-pink-400\">$leechers</span> - ";
                 echo "$size</span>";
                 echo "</div>";
             }

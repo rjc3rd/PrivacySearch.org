@@ -148,15 +148,15 @@
             }
 
             $end_time = number_format(microtime(true) - $start_time, 2, '.', '');
-            echo "<p id=\"time\">Fetched the results in $end_time seconds$source</p>";
+            echo "<p class=\"mb-4 text-sm text-zinc-500 dark:text-zinc-400\">Fetched the results in $end_time seconds$source</p>";
         }
 
     function print_next_page_button($text, $page, $query, $type) {
-        echo "<form class=\"page\" action=\"search.php\" target=\"_top\" method=\"get\" autocomplete=\"off\">";
+        echo "<form class=\"inline\" action=\"search.php\" target=\"_top\" method=\"get\" autocomplete=\"off\">";
         echo "<input type=\"hidden\" name=\"p\" value=\"" . $page . "\" />";
         echo "<input type=\"hidden\" name=\"q\" value=\"$query\" />";
         echo "<input type=\"hidden\" name=\"t\" value=\"$type\" />";
-        echo "<button type=\"submit\">$text</button>";
+        echo "<button type=\"submit\" class=\"min-w-9 rounded-lg px-2 py-1.5 text-sm font-medium text-zinc-600 transition hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800\">$text</button>";
         echo "</form>";
     }
 

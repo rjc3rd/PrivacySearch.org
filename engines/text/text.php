@@ -108,12 +108,12 @@
         public static function print_results($results, $opts)  {
 
             if (empty($results)) {
-                echo "<div class=\"text-result-container\"><p>An error occured fetching results</p></div>";
+                echo "<div class=\"max-w-2xl\"><p class=\"text-zinc-500 dark:text-zinc-400\">An error occured fetching results</p></div>";
                 return;
             }
 
             if (array_key_exists("error", $results)) {
-                echo "<div class=\"text-result-container\"><p>" . $results["error"]["message"] . "</p></div>";
+                echo "<div class=\"max-w-2xl\"><p class=\"text-zinc-500 dark:text-zinc-400\">" . $results["error"]["message"] . "</p></div>";
                 return;
             }
 
@@ -122,8 +122,8 @@
             if (array_key_exists("did_you_mean", $special)) {
                 $didyoumean = $special["did_you_mean"];
                 $new_url = "/search.php?q="  . urlencode($didyoumean);
-                echo "<p class=\"did-you-mean\">Did you mean ";
-                echo "<a href=\"$new_url\">$didyoumean</a>";
+                echo "<p class=\"mb-4 text-sm text-zinc-500 dark:text-zinc-400\">Did you mean ";
+                echo "<a class=\"text-accent-600 hover:underline dark:text-accent-400\" href=\"$new_url\">$didyoumean</a>";
                 echo "?</p>";
             }
 
@@ -131,20 +131,20 @@
                 $response = $special["special_response"]["response"];
                 $source = $special["special_response"]["source"];
 
-                echo "<p class=\"special-result-container\">";
+                echo "<div class=\"mb-6 max-w-md rounded-xl border border-zinc-200 bg-zinc-50 p-4 text-sm dark:border-zinc-800 dark:bg-zinc-800/50\">";
                 if (array_key_exists("image", $special["special_response"])) {
                     $image_url = $special["special_response"]["image"];
-                    echo "<img src=\"image_proxy.php?url=$image_url\">";
+                    echo "<img class=\"mx-auto mb-3 max-h-48 max-w-full rounded-lg\" src=\"image_proxy.php?url=$image_url\">";
                 }
-                echo $response;
+                echo "<p class=\"text-zinc-700 dark:text-zinc-300\">$response</p>";
                 if ($source) {
                     $source = check_for_privacy_frontend($source, $opts);
-                    echo "<a href=\"$source\" rel=\"noreferer noopener\" target=\"_blank\">$source</a>";
+                    echo "<a class=\"mt-2 block truncate text-accent-600 hover:underline dark:text-accent-400\" href=\"$source\" rel=\"noreferer noopener\" target=\"_blank\">$source</a>";
                 }
-                echo "</p>";
+                echo "</div>";
             }
 
-            echo "<div class=\"text-result-container\">";
+            echo "<div class=\"flex max-w-2xl flex-col gap-6\">";
 
             foreach($results as $result) {
                 if (!is_array($result))
@@ -159,12 +159,12 @@
                 $base_url = get_base_url($url);
                 $description = $result["description"];
 
-                echo "<div class=\"text-result-wrapper\">";
-                echo "<a rel=\"noreferer noopener\"  href=\"$url\">";
-                echo "$base_url";
-                echo "<h2>$title</h2>";
+                echo "<div class=\"break-words\">";
+                echo "<a class=\"group\" rel=\"noreferer noopener\" href=\"$url\">";
+                echo "<span class=\"text-sm text-zinc-500 dark:text-zinc-400\">$base_url</span>";
+                echo "<h2 class=\"text-lg text-accent-700 group-hover:underline dark:text-accent-400\">$title</h2>";
                 echo "</a>";
-                echo "<span>$description</span>";
+                echo "<span class=\"text-sm text-zinc-600 dark:text-zinc-300\">$description</span>";
                 echo "</div>";
             }
 

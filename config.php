@@ -4,9 +4,6 @@ return (object) array(
     // Default language profile to be used on the website
     "language" => "en",
 
-    // The default theme css to use
-    "default_theme" => "dark",
-
     "preferred_engines" => array(
         "text" => "auto" // auto will automatically balance between all scrapers
         // "text" => "auto"  // auto is recommended

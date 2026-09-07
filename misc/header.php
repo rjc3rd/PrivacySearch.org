@@ -21,11 +21,4 @@
         <link rel="icon" type="image/svg+xml" href="favicon.svg">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <link rel="stylesheet" type="text/css" href="css/output.css"/>
-        <!-- TODO: remove once search.php/settings.php/api.php and the engine
-             result-renderers are all converted to Tailwind too. Hardcoded to
-             dark.css (rather than the old theme-picker logic, now removed)
-             just to keep those still-unconverted pages' CSS variables defined
-             during the transition. -->
-        <link rel="stylesheet" type="text/css" href="static/css/styles.css"/>
-        <link rel="stylesheet" type="text/css" href="static/css/dark.css"/>
         <link title="<?php printtext("page_title"); ?>" type="application/opensearchdescription+xml" href="opensearch.xml?method=POST" rel="search"/>

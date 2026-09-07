@@ -79,8 +79,6 @@
         $opts->type = (int) ($_REQUEST["t"] ?? 0);
         $opts->page = (int) ($_REQUEST["p"] ?? 0);
 
-        $opts->theme = $_REQUEST["theme"] ?? trim(htmlspecialchars($_COOKIE["theme"] ?? $opts->default_theme ?? "dark"));
-
         // Mandatory, not a visitor setting -- see commit history for why.
         $opts->safe_search = true;
 
@@ -123,7 +121,7 @@
         {
             case 1:
                 if ($opts->disable_bittorrent_search) {
-                    echo "<p class=\"text-result-container\">" . TEXTS["feature_disabled"] . "</p>";
+                    echo "<p class=\"text-zinc-500 dark:text-zinc-400\">" . TEXTS["feature_disabled"] . "</p>";
                     break;
                 }
 
@@ -132,7 +130,7 @@
 
             case 2:
                 if ($opts->disable_hidden_service_search) {
-                    echo "<p class=\"text-result-container\">" . TEXTS["feature_disabled"] . "</p>";
+                    echo "<p class=\"text-zinc-500 dark:text-zinc-400\">" . TEXTS["feature_disabled"] . "</p>";
                     break;
                 }
                 require_once "engines/ahmia/hidden_service.php";
