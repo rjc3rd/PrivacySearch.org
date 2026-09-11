@@ -31,5 +31,5 @@
         <link rel="icon" type="image/svg+xml" href="favicon.svg">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <link rel="manifest" href="site.webmanifest">
-        <link rel="stylesheet" type="text/css" href="css/output.css"/>
+        <link rel="stylesheet" type="text/css" href="css/output.css?v=<?php echo @filemtime(__DIR__ . '/../css/output.css'); ?>"/>
         <link title="<?php printtext("page_title"); ?>" type="application/opensearchdescription+xml" href="opensearch.xml?method=POST" rel="search"/>
