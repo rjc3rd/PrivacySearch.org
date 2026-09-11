@@ -16,7 +16,7 @@ $GLOBALS["opts"] = require_once "config.php";
     <title>401 Unauthorized — ProxySearch</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <link rel="stylesheet" type="text/css" href="/css/output.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/output.css?v=<?php echo @filemtime(__DIR__ . '/../css/output.css'); ?>"/>
 </head>
 <body class="bg-white text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100">
     <div class="flex min-h-screen flex-col items-center justify-center gap-4 px-4 pb-24 text-center">
