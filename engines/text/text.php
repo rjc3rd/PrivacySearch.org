@@ -4,7 +4,7 @@
     }
 
     class TextSearch extends EngineRequest {
-        protected $cache_key, $engine, $engines, $engine_request, $special_request;
+        protected $cache_key, $engine, $engines, $engine_request, $special_request, $auto_mode;
         public function __construct($opts, $mh) {
             $this->engines = get_engines();
             shuffle($this->engines);
@@ -16,6 +16,11 @@
             $this->opts = $opts;
 
             $this->engine = $opts->engine;
+            // Only fall back to another engine on a failed fetch when the
+            // visitor asked for "auto" -- an explicitly-picked engine (e.g.
+            // engine=bing) should stay that engine even if it comes back
+            // empty, not get silently swapped for a different one.
+            $this->auto_mode = ($this->engine == "auto");
 
             $query_parts = explode(" ", $this->query);
             $last_word_query = end($query_parts);
@@ -85,6 +90,31 @@
                 return array();
 
             $results = $this->engine_request->get_results();
+
+            // select_engine() only avoids an engine already known to be on
+            // cooldown -- it can still hand back one whose actual scrape
+            // fails this request (blocked, markup change, transient
+            // network blip). Previously that meant giving up immediately
+            // and returning empty for the whole request, i.e. exactly the
+            // "sometimes blank, not sure which engine" bug: whichever
+            // engine auto happened to shuffle up front, with no fallback.
+            // Retry against the other non-cooled-down engines, synchronously,
+            // before giving up -- bounded by the 2 engines left to try.
+            while ($this->auto_mode && empty($results) && !empty($this->engines)) {
+                set_cooldown($this->engine, ($this->opts->request_cooldown ?? "1") * 60, $this->opts->cooldowns);
+
+                $this->engine = $this->select_engine();
+                if (is_null($this->engine))
+                    break;
+
+                // No $mh here -- this is a synchronous retry outside the
+                // original curl_multi batch, not another parallel handle.
+                $this->engine_request = $this->get_engine_request($this->engine, $this->opts, null);
+                if (is_null($this->engine_request))
+                    break;
+
+                $results = $this->engine_request->get_results();
+            }
 
             if (empty($results)) {
                 set_cooldown($this->engine, ($this->opts->request_cooldown ?? "1") * 60, $this->opts->cooldowns);

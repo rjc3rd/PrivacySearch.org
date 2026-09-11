@@ -161,7 +161,13 @@
 
         $results = $search_category->get_results();
 
-        if (!$do_print || empty($results))
+        // Used to also bail out here on empty($results) -- meant printing
+        // nothing at all for that case, but print_results() already has its
+        // own "An error occured fetching results" branch for exactly this,
+        // which this early return made permanently unreachable. That's the
+        // silent-blank-page bug: a failed fetch showed nothing at all
+        // instead of that message.
+        if (!$do_print)
             return $results;
 
         print_elapsed_time($start_time, $results, $opts);
