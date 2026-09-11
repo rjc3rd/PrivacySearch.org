@@ -134,7 +134,7 @@
                 echo "<div class=\"mb-6 max-w-md rounded-xl border border-zinc-200 bg-zinc-50 p-4 text-sm dark:border-zinc-800 dark:bg-zinc-800/50\">";
                 if (array_key_exists("image", $special["special_response"])) {
                     $image_url = $special["special_response"]["image"];
-                    echo "<img class=\"mx-auto mb-3 max-h-48 max-w-full rounded-lg\" src=\"image_proxy.php?url=$image_url\">";
+                    echo "<img class=\"mx-auto mb-3 max-h-48 max-w-full rounded-lg\" src=\"image_proxy.php?url=" . urlencode($image_url) . "\">";
                 }
                 echo "<p class=\"text-zinc-700 dark:text-zinc-300\">$response</p>";
                 if ($source) {
